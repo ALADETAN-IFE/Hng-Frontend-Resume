@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HNG Frontend Resume - Fortune Ifeloju Aladetan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            padding: 40px 20px;
+            color: #e0e0e0;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1829 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Header with circuit pattern effect */
+        .header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #00d4ff 75%, #00a8cc 100%);
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 51px),
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 51px);
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            background: #1a1f3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .contact-item:hover {
+            color: #fff;
+        }
+
+        /* Content sections */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #ff6b35 0%, #00d4ff 100%);
+            border-radius: 2px;
+        }
+
+        /* Project cards with circuit accent */
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, #ff6b35, #00d4ff) 1;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .project-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .stage-badge {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.15);
+            color: #00d4ff;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonial-box {
+            background: rgba(255, 107, 53, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .testimonial-box::before {
+            content: '"';
+            font-size: 60px;
+            color: rgba(255, 107, 53, 0.3);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            color: #d0d0d0;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .testimonial-author {
+            color: #ff6b35;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Empty testimonial state */
+        .empty-testimonials {
+            text-align: center;
+            padding: 40px 20px;
+            color: #808080;
+            font-style: italic;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.3;
+        }
+
+        /* Footer decoration */
+        .footer {
+            background: linear-gradient(90deg, #ff6b35 0%, #f7931e 25%, #00d4ff 75%, #00a8cc 100%);
+            height: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .name {
+                font-size: 32px;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="profile-photo">FIA</div>
+                <div class="header-text">
+                    <h1 class="name">Fortune Ifeloju Aladetan</h1>
+                    <p class="title">Full-Stack Developer | Frontend Specialist</p>
+                    <div class="contact-info">
+                        <a href="mailto:ifecodes01@gmail.com" class="contact-item">
+                            📧 ifecodes01@gmail.com
+                        </a>
+                        <a href="https://github.com/ALADETAN-IFE" target="_blank" class="contact-item">
+                            🔗 GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Projects Section -->
+            <div class="section">
+                <h2 class="section-title">HNG Internship Projects</h2>
+
+                <!-- Stage 0 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-name">Testable Profile Card Component</h3>
+                        </div>
+                        <span class="stage-badge">Stage 0</span>
+                    </div>
+                    <p class="project-description">
+                        Built an accessible, responsive profile card component with semantic HTML and automated testing support. Implemented data-testid attributes for QA automation and ensured full keyboard navigation compliance.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">Vanilla JavaScript</span>
+                        <span class="tech-tag">Semantic HTML</span>
+                        <span class="tech-tag">Accessibility (ARIA)</span>
+                        <span class="tech-tag">Responsive Design</span>
+                    </div>
+                </div>
+
+                <!-- Stage 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-name">Multi-Page Portfolio with Contact Form</h3>
+                        </div>
+                        <span class="stage-badge">Stage 1</span>
+                    </div>
+                    <p class="project-description">
+                        Extended Stage 0 project with Contact Us form featuring comprehensive validation and an About Me page. Implemented client-side validation, error handling, and success states while maintaining accessibility standards.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Form Validation</span>
+                        <span class="tech-tag">ARIA Attributes</span>
+                        <span class="tech-tag">Responsive Layouts</span>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-name">Multi-Framework Ticket Management System</h3>
+                        </div>
+                        <span class="stage-badge">Stage 2</span>
+                    </div>
+                    <p class="project-description">
+                        Developed identical ticket management applications across three frontend frameworks (React, Vue.js, Twig). Implemented full CRUD operations, authentication flow, and protected routes with consistent UI/UX across all implementations.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Twig</span>
+                        <span class="tech-tag">localStorage</span>
+                        <span class="tech-tag">State Management</span>
+                        <span class="tech-tag">CRUD Operations</span>
+                        <span class="tech-tag">Authentication</span>
+                    </div>
+                </div>
+
+                <!-- Stage 3a -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-name">Audiophile E-commerce Platform</h3>
+                        </div>
+                        <span class="stage-badge">Stage 3a</span>
+                    </div>
+                    <p class="project-description">
+                        Built a pixel-perfect e-commerce website from Figma design using Next.js and Convex. Implemented complete checkout flow with email notifications, order management, and real-time backend integration.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Convex</span>
+                        <span class="tech-tag">Resend API</span>
+                        <span class="tech-tag">Form Validation</span>
+                        <span class="tech-tag">Email Integration</span>
+                        <span class="tech-tag">Pixel-Perfect Design</span>
+                    </div>
+                </div>
+
+                <!-- Stage 3b -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-name">Advanced Todo App with Theme Switcher</h3>
+                        </div>
+                        <span class="stage-badge">Stage 3b</span>
+                    </div>
+                    <p class="project-description">
+                        Created a feature-rich mobile todo application with light/dark theme switching and real-time synchronization. Implemented drag-and-drop functionality, persistent theme preferences, and seamless CRUD operations using Convex.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">Convex</span>
+                        <span class="tech-tag">Expo Router</span>
+                        <span class="tech-tag">Theme Switching</span>
+                        <span class="tech-tag">Real-time Updates</span>
+                        <span class="tech-tag">Mobile UI/UX</span>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-name">Framez Social Media Application</h3>
+                        </div>
+                        <span class="stage-badge">Stage 4</span>
+                    </div>
+                    <p class="project-description">
+                        Developed a fully-functional mobile social media app for iOS and Android. Implemented secure authentication, real-time post feeds, user profiles, and image upload functionality with persistent sessions.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">Firebase/Supabase</span>
+                        <span class="tech-tag">Authentication</span>
+                        <span class="tech-tag">Real-time Feeds</span>
+                        <span class="tech-tag">Image Uploads</span>
+                        <span class="tech-tag">Appetize.io Deployment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="section">
+                <h2 class="section-title">Testimonials & Feedback</h2>
+                <div class="empty-testimonials">
+                    <div class="empty-icon">💬</div>
+                    <p>Testimonials will be added after project review and peer feedback.</p>
+                    <p style="margin-top: 10px; font-size: 14px;">Stay tuned for updates from teammates and mentors!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
