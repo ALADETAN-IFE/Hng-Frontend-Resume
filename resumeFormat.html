@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Ifeloju Aladetan - Frontend Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+
+        .resume-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            position: relative;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #00d4ff 75%, #00a8cc 100%);
+            padding: 25px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 51px),
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 51px);
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: url('https://res.cloudinary.com/dserpv6p5/image/upload/v1758826577/kmgsx8vsl7ytwzzdbb1z.png') center/cover no-repeat;
+            background-color: #1a1f3a;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+        }
+
+        .contact-item {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+        }
+
+        /* Main Content - Two Column Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 0;
+            min-height: calc(297mm - 120px);
+        }
+
+        /* Left Column - Skills */
+        .left-column {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px 20px;
+            border-right: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Right Column - About & Projects */
+        .right-column {
+            padding: 25px 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 18px;
+        }
+
+        .skill-category-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ff6b35;
+            margin-bottom: 8px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .skill-item {
+            font-size: 11px;
+            color: #b0b0b0;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .skill-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-size: 14px;
+        }
+
+        /* Projects */
+        .project-item {
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 6px;
+        }
+
+        .project-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .stage-badge {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            font-size: 10px;
+            color: #b0b0b0;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.15);
+            color: #00d4ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonial-note {
+            font-size: 10px;
+            color: #808080;
+            font-style: italic;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(90deg, #ff6b35 0%, #f7931e 25%, #00d4ff 75%, #00a8cc 100%);
+            height: 4px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .resume-page {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .project-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-page">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="profile-photo" role="img" aria-label="Profile picture of Fortune Aladetan"></div>
+                <div class="header-text">
+                    <h1 class="name">Fortune Ifeloju Aladetan</h1>
+                    <p class="title">Full-Stack Developer | Frontend Specialist</p>
+                    <div class="contact-info">
+                        <span class="contact-item">📧 ifecodes01@gmail.com</span>
+                        <span class="contact-item">🔗 github.com/ALADETAN-IFE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column: Skills -->
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Frontend</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">HTML5 & CSS3</div>
+                            <div class="skill-item">JavaScript (ES6+)</div>
+                            <div class="skill-item">React & Next.js</div>
+                            <div class="skill-item">Vue.js</div>
+                            <div class="skill-item">React Native</div>
+                            <div class="skill-item">Responsive Design</div>
+                            <div class="skill-item">Twig Templates</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Backend</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">Node.js & Express</div>
+                            <div class="skill-item">Convex</div>
+                            <div class="skill-item">Firebase</div>
+                            <div class="skill-item">Supabase</div>
+                            <div class="skill-item">REST APIs</div>
+                            <div class="skill-item">Real-time Data</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Mobile</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">React Native</div>
+                            <div class="skill-item">Expo & Expo Router</div>
+                            <div class="skill-item">iOS/Android Dev</div>
+                            <div class="skill-item">Mobile UI/UX</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Tools</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">Git/GitHub</div>
+                            <div class="skill-item">Figma</div>
+                            <div class="skill-item">Vercel/Netlify</div>
+                            <div class="skill-item">Appetize.io</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Core</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">CRUD Operations</div>
+                            <div class="skill-item">Authentication</div>
+                            <div class="skill-item">Form Validation</div>
+                            <div class="skill-item">State Management</div>
+                            <div class="skill-item">Accessibility (ARIA)</div>
+                            <div class="skill-item">Semantic HTML</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: About & Projects -->
+            <div class="right-column">
+                <!-- About Me -->
+                <div class="section">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-text">
+                        Passionate Full-Stack Developer with strong frontend expertise demonstrated through the HNG Internship. Versatile across multiple frameworks and platforms—from responsive web applications to mobile-first solutions. Committed to creating pixel-perfect, accessible user interfaces and seamless experiences through continuous learning and high-quality development practices.
+                    </p>
+                </div>
+
+                <!-- Projects -->
+                <div class="section">
+                    <h2 class="section-title">HNG Internship Projects</h2>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3 class="project-name">Testable Profile Card Component</h3>
+                            <span class="stage-badge">Stage 0</span>
+                        </div>
+                        <p class="project-description">
+                            Built accessible, responsive profile card with semantic HTML and automated testing support. Implemented data-testid attributes for QA automation with full keyboard navigation.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">ARIA</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3 class="project-name">Multi-Page Portfolio with Contact Form</h3>
+                            <span class="stage-badge">Stage 1</span>
+                        </div>
+                        <p class="project-description">
+                            Extended portfolio with validated contact form and About page. Implemented comprehensive client-side validation, error handling, and success states.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Validation</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3 class="project-name">Multi-Framework Ticket Management System</h3>
+                            <span class="stage-badge">Stage 2</span>
+                        </div>
+                        <p class="project-description">
+                            Developed identical ticket apps across React, Vue.js, and Twig. Full CRUD operations, authentication flow, and protected routes with consistent UI/UX.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Twig</span>
+                            <span class="tech-tag">CRUD</span>
+                            <span class="tech-tag">Auth</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3 class="project-name">Audiophile E-commerce Platform</h3>
+                            <span class="stage-badge">Stage 3a</span>
+                        </div>
+                        <p class="project-description">
+                            Pixel-perfect e-commerce site from Figma using Next.js and Convex. Complete checkout flow with email notifications and order management.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Convex</span>
+                            <span class="tech-tag">Email API</span>
+                            <span class="tech-tag">Pixel-Perfect</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3 class="project-name">Advanced Todo App with Theme Switcher</h3>
+                            <span class="stage-badge">Stage 3b</span>
+                        </div>
+                        <p class="project-description">
+                            Mobile todo app with light/dark themes and real-time sync. Drag-and-drop, persistent preferences, and seamless CRUD via Convex.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">Convex</span>
+                            <span class="tech-tag">Themes</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3 class="project-name">Framez Social Media Application</h3>
+                            <span class="stage-badge">Stage 4</span>
+                        </div>
+                        <p class="project-description">
+                            Full-featured mobile social app for iOS/Android. Secure authentication, real-time feeds, user profiles, and image uploads with persistent sessions.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Auth</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="section">
+                    <h2 class="section-title">Testimonials</h2>
+                    <div class="testimonial-note">
+                        Testimonials will be added after project review and peer feedback.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
