@@ -25,7 +25,7 @@
 
         .resume-page {
             width: 210mm;
-            min-height: 297mm;
+            height: 297mm;
             margin: 0 auto;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
             color: #e0e0e0;
@@ -78,7 +78,7 @@
         }
 
         .name {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -86,7 +86,7 @@
         }
 
         .title {
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.95);
             font-weight: 500;
             margin-bottom: 8px;
@@ -109,13 +109,14 @@
             display: grid;
             grid-template-columns: 1fr 1.8fr;
             gap: 0;
-            min-height: calc(297mm - 120px);
+            height: calc(297mm - 150px);
         }
 
         /* Left Column - Skills */
         .left-column {
             background: rgba(0, 0, 0, 0.2);
             padding: 25px 20px;
+            padding-bottom: 0px;
             border-right: 2px solid rgba(0, 212, 255, 0.2);
         }
 
@@ -125,7 +126,7 @@
         }
 
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -185,6 +186,24 @@
             margin-bottom: 18px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-item-stage3 {
+            display: flex;
+            justify-content: space-between;
+            
+            & .project-item:first-child {
+                margin-bottom: 18px;
+                padding-bottom: 15px;
+                padding-right: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            & .project-item:last-child {
+                margin-bottom: 18px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
         }
 
         .project-item:last-child {
@@ -364,12 +383,12 @@
             <!-- Right Column: About & Projects -->
             <div class="right-column">
                 <!-- About Me -->
-                <div class="section">
+                <article class="section">
                     <h2 class="section-title">About Me</h2>
                     <p class="about-text">
                         Passionate Full-Stack Developer with strong frontend expertise demonstrated through the HNG Internship. Versatile across multiple frameworks and platforms—from responsive web applications to mobile-first solutions. Committed to creating pixel-perfect, accessible user interfaces and seamless experiences through continuous learning and high-quality development practices.
                     </p>
-                </div>
+                </article>
 
                 <!-- Projects -->
                 <div class="section">
@@ -425,37 +444,40 @@
                         </div>
                     </div>
 
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3 class="project-name">Audiophile E-commerce Platform</h3>
-                            <span class="stage-badge">Stage 3a</span>
+                    <div class="project-item-stage3">
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-name">Audiophile E-commerce Platform</h3>
+                                <span class="stage-badge">Stage 3a</span>
+                            </div>
+                            <p class="project-description">
+                                Pixel-perfect e-commerce site from Figma using Next.js and Convex. Complete checkout flow with email notifications and order management.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">Convex</span>
+                                <span class="tech-tag">Email API</span>
+                                <span class="tech-tag">Pixel-Perfect</span>
+                            </div>
                         </div>
-                        <p class="project-description">
-                            Pixel-perfect e-commerce site from Figma using Next.js and Convex. Complete checkout flow with email notifications and order management.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Convex</span>
-                            <span class="tech-tag">Email API</span>
-                            <span class="tech-tag">Pixel-Perfect</span>
+    
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h3 class="project-name">Advanced Todo App with Theme Switcher</h3>
+                                <span class="stage-badge">Stage 3b</span>
+                            </div>
+                            <p class="project-description">
+                                Mobile todo app with light/dark themes and real-time sync. Drag-and-drop, persistent preferences, and seamless CRUD via Convex.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Expo</span>
+                                <span class="tech-tag">Convex</span>
+                                <span class="tech-tag">Themes</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3 class="project-name">Advanced Todo App with Theme Switcher</h3>
-                            <span class="stage-badge">Stage 3b</span>
-                        </div>
-                        <p class="project-description">
-                            Mobile todo app with light/dark themes and real-time sync. Drag-and-drop, persistent preferences, and seamless CRUD via Convex.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Expo</span>
-                            <span class="tech-tag">Convex</span>
-                            <span class="tech-tag">Themes</span>
-                        </div>
-                    </div>
 
                     <div class="project-item">
                         <div class="project-header">
@@ -468,7 +490,7 @@
                         <div class="tech-stack">
                             <span class="tech-tag">React Native</span>
                             <span class="tech-tag">Expo</span>
-                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Supabase</span>
                             <span class="tech-tag">Auth</span>
                             <span class="tech-tag">Real-time</span>
                         </div>
